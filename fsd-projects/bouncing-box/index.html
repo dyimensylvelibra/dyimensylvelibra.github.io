@@ -59,17 +59,18 @@
           box.css("left", newPositionX);
         }
 
-        // changes the text displayed on the Box
+// changes the text displayed on the Box
         function changeBoxText(newText) {
           box.text(newText);
         }
-
         //////////////////////////////////////////////////////////////////
         /////////////////// YOUR CODE BELOW HERE /////////////////////////
         //////////////////////////////////////////////////////////////////
 
         // TODO 2 - Variable declarations
-
+       var positionX = 0;
+       var points = 0;
+       var speed = 10;
 
 
 
@@ -80,9 +81,15 @@
          * If the box drifts off the screen, turn it around!
          */
         function update() {
-
-        
-
+         moveBoxTo(positionX);// moves box to the right
+         positionX = positionX + speed; // Adds speed to newPositionX
+         if (positionX > boardWidth){
+          speed = speed * -1;
+         }
+        if (positionX < 0){
+          speed = speed * -1;
+        }
+       
           
         }
 
@@ -94,6 +101,13 @@
          * - move the box to the left side of the screen.
          */
         function handleBoxClick() {
+         positionX = 0;
+         
+         points = points + 1; // Adds 1 to points
+         speed = 3 * points + 10; // Adds 3 to speed;
+         changeBoxText(points);
+
+
 
 
 
